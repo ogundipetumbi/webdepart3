@@ -99,6 +99,10 @@ The form also includes areas for displaying validation messages and submission f
 ### 4.5 Contact Page
 The Contact page provides visitors with the business's contact details and a general message form.
 
+Features include:
+* Business email address.
+
+
 
 
 
