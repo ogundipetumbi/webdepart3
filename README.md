@@ -78,5 +78,6 @@ The Hair Guide page introduces three general hair porosity categories:
 * Medium porosity.
 * High porosity.
 
+JavaScript accordion functionality allows visitors to expand and collapse the information associated with each category.
 
 
