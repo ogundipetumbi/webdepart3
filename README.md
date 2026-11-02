@@ -254,6 +254,23 @@ The current file allows all user agents to crawl the website and identifies the 
 **SEO limitation:** Creating a sitemap and robots file does not mean that search engines will index the website. 
 ## 11. Testing and Quality Assurance
 
+| Test                  | Expected result                                                         |
+| --------------------- | ----------------------------------------------------------------------- |
+| Homepage navigation   | Navigation links open the correct pages.                                |
+| Product catalogue     | Products display correctly.                                             |
+| Product search        | Relevant products appear based on search terms.                         |
+| Category filtering    | Products are filtered according to the selected category.               |
+| Empty search          | An appropriate message appears when no products match.                  |
+| Product lightbox      | Product images open and close correctly.                                |
+| Porosity accordion    | Information expands and collapses correctly.                            |
+| Enquiry form          | Invalid or incomplete information displays appropriate feedback.        |
+| Contact form          | Validation works and the intended email process is clear.               |
+| Map                   | The map loads and the marker opens the correct Google Maps location.    |
+| Responsive layout     | Pages remain usable on mobile, tablet and desktop screens.              |
+| Accessibility         | Forms, navigation and interactive elements can be used with a keyboard. |
+| SEO files             | Sitemap and robots.txt are accessible at the deployed website address.  |
+| Browser compatibility | Pages display and function correctly in supported browsers.             |
+
 
 
 
