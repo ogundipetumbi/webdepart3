@@ -303,6 +303,20 @@ Potential improvements include:
 * Added introductory brand content and product information.
 * Developed the initial CSS styling.
 
+### Version 1.2 — JavaScript Functionality
+
+* Added dynamic product catalogue functionality.
+* Implemented product search and category filtering.
+* Added product result counting.
+* Added an empty-state message for unsuccessful searches.
+* Implemented product image lightbox functionality.
+* Added the hair porosity accordion.
+* Introduced product selection through URL query parameters.
+* Added enquiry form validation.
+* Added contact form validation and user feedback.
+
+
+
 
 
 
