@@ -24,3 +24,7 @@ The main objectives of the website are to:
 * Incorporate an interactive map showing the business location.
 * Apply responsive design principles to support mobile and desktop users.
 * Implement basic search engine optimisation (SEO) and accessibility practices.
+
+## 3. Website Structure
+
+The website consists of five main HTML pages.
