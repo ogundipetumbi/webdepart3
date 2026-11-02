@@ -117,6 +117,7 @@ Features include:
 * Interactive map navigation.
 * Location marker.
 * Map zoom controls.
+* Google Maps link.
 
 
 
