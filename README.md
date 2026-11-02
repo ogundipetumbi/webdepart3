@@ -48,3 +48,6 @@ The navigation is intended to make the website easy to understand and use.
 he homepage introduces the LengthHairCare brand through a hero section, featured products and an overview of the brand's approach to natural hair care.
 
 Features include:
+* Main promotional heading and introductory text.
+* Navigation links to the other website pages.
+* Featured product cards.
