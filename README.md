@@ -51,3 +51,6 @@ Features include:
 * Main promotional heading and introductory text.
 * Navigation links to the other website pages.
 * Featured product cards.
+* Product image viewing functionality.
+* Links to the product catalogue and hair guide.
+* Brand introduction and benefits sections.
