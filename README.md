@@ -134,6 +134,9 @@ The map requires an internet connection to load the external map library and map
 | Google Maps    | External directions and location access.               |
 | GitHub Pages   | Intended static website hosting platform.              |
 
+No database or custom backend server is included in the assignment.
+
+
 
 
 
