@@ -81,5 +81,7 @@ The Hair Guide page introduces three general hair porosity categories:
 JavaScript accordion functionality allows visitors to expand and collapse the information associated with each category.
 The page also includes an enquiry form where visitors can provide their details and request a product recommendation.
 
+The information provided is intended for general educational purposes and does not replace professional hair or scalp advice.
+
 
 
