@@ -1,298 +1,243 @@
-﻿/* LengthHairCare interactions for the hair guide, product catalogue and forms. */
-document.addEventListener('DOMContentLoaded', () => {
-    // Porosity cards work as a simple keyboard-friendly accordion on small screens too.
-    document.querySelectorAll('[data-accordion-button]').forEach((button) => {
-        button.addEventListener('click', () => {
-            const panel = document.getElementById(button.getAttribute('aria-controls'));
-            const expanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', String(!expanded));
-            if (panel) panel.hidden = expanded;
-        });
-    });
+﻿    // ENQUIRY FORM
+    // Validates customer information and sends the enquiry
+    // to the LengthHairCare team using Web3Forms.
 
-    // The catalogue is rendered from one small data list so search and filtering stay in sync.
-    const productGrid = document.querySelector('[data-product-grid]');
-    if (productGrid) {
-        const products = [
-            { name: 'Hair Growth Oil', category: 'oil', price: 'R350', image: '../assets/high-porosity-hair-oil.jpg', alt: 'Bottle of LengthHairCare hair growth oil', description: 'A nourishing oil blend for scalp care and sealing in moisture.' },
-            { name: 'Herbal Hair Tea Spray', category: 'spray', price: 'Price on enquiry', image: '../assets/high-porosity-herbal-tea.jpg', alt: 'Herbal hair tea spray for a refreshing moisture boost', description: 'A refreshing herbal spray to add a light layer of moisture to your routine.' },
-            { name: 'Natural Hair Growth Guide', category: 'guide', price: 'Price on enquiry', image: '../assets/hair-care-comb-guide.jpg', alt: 'Comb and natural hair care guide', description: 'A practical digital guide to building a consistent natural hair routine.' },
-            { name: 'Porosity Care Combo', category: 'combo', price: 'Price on enquiry', image: '../assets/high-porosity-care-combo.jpg', alt: 'Hair care products arranged as a porosity care combo', description: 'A convenient pairing for people who want to explore a simple care routine.' },
-            { name: 'Low Porosity Hair Oil', category: 'oil', price: 'Price on enquiry', image: '../assets/low-porosity-hair-oil.jpg', alt: 'Hair oil recommendation for low porosity hair', description: 'A lighter oil option to discuss if you are concerned about product build-up.' },
-            { name: 'Medium Porosity Hair Tea', category: 'spray', price: 'Price on enquiry', image: '../assets/medium-porosity-herbal-tea.jpg', alt: 'Herbal tea hair product for medium porosity hair', description: 'A balanced herbal spray option for a regular moisture routine.' },
-            { name: 'High Porosity Hair Tea', category: 'spray', price: 'Price on enquiry', image: '../assets/high-porosity-herbal-tea.jpg', alt: 'Herbal tea hair product for high porosity hair', description: 'A refreshing spray to complement a routine focused on retaining moisture.' }
-        ];
-        const search = document.querySelector('#product-search');
-        const filter = document.querySelector('#product-filter');
-        const count = document.querySelector('#product-count');
-        const empty = document.querySelector('#no-products');
-
-        const render = () => {
-            const query = (search?.value || '').trim().toLowerCase();
-            const category = filter?.value || 'all';
-            const matches = products.filter((item) => {
-                const text = `${item.name} ${item.description} ${item.category}`.toLowerCase();
-                return text.includes(query) && (category === 'all' || item.category === category);
-            });
-            productGrid.innerHTML = matches.map((item) => `
-                <article class="product-card">
-                    <button class="gallery-trigger" type="button" aria-label="View larger image of ${item.name}" data-full-image="${item.image}" data-image-alt="${item.alt}">
-                        <span class="product-image"><img src="${item.image}" alt="${item.alt}" loading="lazy"></span>
-                        <span class="gallery-hint">View image</span>
-                    </button>
-                    <h3>${item.name}</h3><p>${item.description}</p>
-                    <p class="price">${item.price}</p>
-                    <a class="button" href="enquiry.html?product=${encodeURIComponent(item.name)}">Enquire about this</a>
-                </article>`).join('');
-            if (count) count.textContent = `${matches.length} ${matches.length === 1 ? 'product' : 'products'} shown`;
-            if (empty) empty.hidden = matches.length > 0;
-        };
-        search?.addEventListener('input', render);
-        filter?.addEventListener('change', render);
-        render();
-    }
-
-    // IMAGE LIGHTBOX
-// Allows visitors to enlarge images on the homepage and products page.
-
-const lightbox = document.querySelector('#image-lightbox');
-
-if (lightbox) {
-    const lightboxImage = lightbox.querySelector('.lightbox-image');
-    const closeButton = lightbox.querySelector('[data-lightbox-close]');
-
-    let previousFocus = null;
-
-    // Open the enlarged image when a gallery image is selected.
-    document.addEventListener('click', (event) => {
-
-        // Make sure the clicked element supports closest().
-        if (!(event.target instanceof Element)) return;
-
-        const imageButton = event.target.closest('.gallery-trigger');
-
-        if (!imageButton) return;
-
-        previousFocus = imageButton;
-
-        // Get the image information from the selected button.
-        const imageSource = imageButton.dataset.fullImage;
-        const imageDescription = imageButton.dataset.imageAlt || '';
-
-        if (!imageSource || !lightboxImage) return;
-
-        // Display the selected image.
-        lightboxImage.src = imageSource;
-        lightboxImage.alt = imageDescription;
-
-        // Show the lightbox.
-        lightbox.hidden = false;
-        document.body.classList.add('lightbox-open');
-
-        // Move keyboard focus to the close button.
-        closeButton?.focus();
-    });
-
-    // Close the lightbox.
-    const closeLightbox = () => {
-
-        lightbox.hidden = true;
-
-        // Remove the enlarged image.
-        if (lightboxImage) {
-            lightboxImage.src = '';
-            lightboxImage.alt = '';
-        }
-
-        document.body.classList.remove('lightbox-open');
-
-        // Return focus to the image that was selected.
-        previousFocus?.focus();
-    };
-
-    // Close using the Close button.
-    closeButton?.addEventListener('click', closeLightbox);
-
-    // Close when the visitor clicks outside the enlarged image.
-    lightbox.addEventListener('click', (event) => {
-
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-
-    });
-
-    // Close using the Escape key.
-    document.addEventListener('keydown', (event) => {
-
-        if (lightbox.hidden) return;
-
-        if (event.key === 'Escape') {
-            closeLightbox();
-        }
-
-    });
-}
-
-    // Shared email check used by both forms.
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-    // Enquiry form: JavaScript validation (the form has novalidate, so no browser pop-ups).
     const enquiryForm = document.querySelector('#enquiry-form');
+
     if (enquiryForm) {
+
+        // Defines the validation rules for each enquiry field.
         const enquiryRules = {
-            name: (v) => v.trim().length < 2 ? 'Please enter your full name (at least 2 letters).' : '',
-            email: (v) => !v.trim()
-                ? 'Please enter your email address.'
-                : !emailPattern.test(v.trim())
-                    ? 'Please enter a valid email address, for example name@example.com.' : '',
-            interest: (v) => !v ? 'Please choose a product or service.' : '',
-            porosity: (v) => !v ? 'Please choose a porosity option.' : '',
-            message: (v) => v.trim().length < 10 ? 'Please write at least 10 characters.' : ''
+
+            name: (v) =>
+                v.trim().length < 2
+                    ? 'Please enter your full name (at least 2 letters).'
+                    : '',
+
+            email: (v) =>
+                !v.trim()
+                    ? 'Please enter your email address.'
+                    : !emailPattern.test(v.trim())
+                        ? 'Please enter a valid email address.'
+                        : '',
+
+            interest: (v) =>
+                !v
+                    ? 'Please choose a product or service.'
+                    : '',
+
+            porosity: (v) =>
+                !v
+                    ? 'Please choose a porosity option.'
+                    : '',
+
+            message: (v) =>
+                v.trim().length < 10
+                    ? 'Please write at least 10 characters.'
+                    : ''
+
         };
 
+        // Checks an individual field and displays its validation message.
         const checkEnquiryField = (name) => {
+
             const field = enquiryForm.elements[name];
-            const error = document.querySelector(`#enquiry-error-${name}`);
+
+            const error = document.querySelector(
+                `#enquiry-error-${name}`
+            );
+
             const problem = enquiryRules[name](field.value);
+
             error.textContent = problem;
+
             error.hidden = !problem;
-            field.setAttribute('aria-invalid', problem ? 'true' : 'false');
+
+            field.setAttribute(
+                'aria-invalid',
+                problem ? 'true' : 'false'
+            );
+
             return !problem;
         };
 
+        // Rechecks fields when customers edit, change or leave them.
         Object.keys(enquiryRules).forEach((name) => {
+
             const field = enquiryForm.elements[name];
+
             field.addEventListener('input', () => {
-                if (field.getAttribute('aria-invalid') === 'true') checkEnquiryField(name);
+
+                if (field.getAttribute('aria-invalid') === 'true') {
+                    checkEnquiryField(name);
+                }
+
             });
-            field.addEventListener('change', () => checkEnquiryField(name));
-            field.addEventListener('blur', () => checkEnquiryField(name));
+
+            field.addEventListener('change', () => {
+                checkEnquiryField(name);
+            });
+
+            field.addEventListener('blur', () => {
+                checkEnquiryField(name);
+            });
+
         });
 
-        enquiryForm.addEventListener('submit', (event) => {
+        // Handles the enquiry form submission.
+        enquiryForm.addEventListener('submit', async (event) => {
+
             event.preventDefault();
 
-            const results = Object.keys(enquiryRules).map(checkEnquiryField);
-            if (results.includes(false)) {
-                const firstBad = Object.keys(enquiryRules).find((name) => enquiryForm.elements[name].getAttribute('aria-invalid') === 'true');
-                enquiryForm.elements[firstBad].focus();
-                return;
-            }
-
-            const data = new FormData(enquiryForm);
             const result = document.querySelector('#enquiry-result');
-            const selected = String(data.get('interest'));
-            const porosity = data.get('porosity');
-            const friendly = { low: 'low', medium: 'medium', high: 'high' }[porosity];
-            const response = selected === 'Hair Growth Oil'
-                ? 'The Hair Growth Oil is listed at R350. We can confirm current availability when we reply.'
-                : `Thanks for asking about ${escapeHTML(selected)}. Price and availability are confirmed on enquiry.`;
-            result.innerHTML = `<strong>Thanks, ${escapeHTML(String(data.get('name')).trim())}.</strong> ${response} ${friendly ? `Based on your ${friendly} porosity selection, our team can also suggest how to introduce it into a routine.` : `If you are unsure of your porosity, our team can help you think through a gentle starting point.`} This summary has not been sent to the team. To send us a message, please use the contact form.`;
-            result.hidden = false;
-            result.focus();
-            const button = enquiryForm.querySelector('button[type="submit"]');
-            button.disabled = true;
-            button.textContent = 'Enquiry received';
-        });
-    }
 
-    // Contact form: JavaScript validation, then the message is sent through Web3Forms
-    // straight to the team's inbox, so the visitor never leaves the website.
-    const WEB3FORMS_ACCESS_KEY = '96e99d96-1b1b-4b5c-815e-51c046d4b88c'; // paste the key Web3Forms emailed you
-    const contactForm = document.querySelector('#contact-form');
-    if (contactForm) {
-        const rules = {
-            name: (v) => v.trim().length < 2
-                ? 'Please enter your full name (at least 2 letters).' : '',
-            email: (v) => !v.trim()
-                ? 'Please enter your email address.'
-                : !emailPattern.test(v.trim())
-                    ? 'Please enter a valid email address, for example name@example.com.' : '',
-            phone: (v) => v.trim() && !/^\+?[0-9\s-]{9,15}$/.test(v.trim())
-                ? 'Please enter a valid phone number using digits only, for example 071 234 5678.' : '',
-            topic: (v) => !v
-                ? 'Please choose a message type.' : '',
-            subject: (v) => v.trim().length < 3
-                ? 'Please enter a subject (at least 3 characters).' : '',
-            message: (v) => v.trim().length < 10
-                ? 'Your message is too short. Please write at least 10 characters.' : ''
-        };
+            const submitButton = enquiryForm.querySelector(
+                'button[type="submit"]'
+            );
 
-        const checkField = (name) => {
-            const field = contactForm.elements[name];
-            const error = document.querySelector(`#error-${name}`);
-            const problem = rules[name](field.value);
-            error.textContent = problem;
-            error.hidden = !problem;
-            field.setAttribute('aria-invalid', problem ? 'true' : 'false');
-            return !problem;
-        };
-
-        // Errors disappear as soon as the visitor fixes the box.
-        Object.keys(rules).forEach((name) => {
-            const field = contactForm.elements[name];
-            field.addEventListener('input', () => {
-                if (field.getAttribute('aria-invalid') === 'true') checkField(name);
-            });
-            field.addEventListener('change', () => checkField(name));
-            field.addEventListener('blur', () => checkField(name));
-        });
-
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const result = document.querySelector('#contact-result');
-            const submitButton = contactForm.querySelector('button[type="submit"]');
             result.hidden = true;
 
-            const results = Object.keys(rules).map(checkField);
+            // Validate all fields before attempting to send the enquiry.
+            const results = Object.keys(enquiryRules).map(
+                checkEnquiryField
+            );
+
+            // If validation fails, focus on the first incorrect field.
             if (results.includes(false)) {
-                const firstBad = Object.keys(rules).find((name) => contactForm.elements[name].getAttribute('aria-invalid') === 'true');
-                contactForm.elements[firstBad].focus();
+
+                const firstBad = Object.keys(enquiryRules).find(
+                    (name) =>
+                        enquiryForm.elements[name].getAttribute(
+                            'aria-invalid'
+                        ) === 'true'
+                );
+
+                enquiryForm.elements[firstBad].focus();
+
                 return;
             }
 
-            const data = new FormData(contactForm);
-            const name = String(data.get('name')).trim();
-            const phone = String(data.get('phone')).trim() || 'Not provided';
-            const subject = `[LengthHairCare] ${data.get('topic')}: ${String(data.get('subject')).trim()}`;
+            // Collect the customer's submitted information.
+            const data = new FormData(enquiryForm);
 
+            const name = String(data.get('name')).trim();
+
+            const email = String(data.get('email')).trim();
+
+            const interest = String(data.get('interest'));
+
+            const porosity = String(data.get('porosity'));
+
+            const customerMessage = String(
+                data.get('message')
+            ).trim();
+
+            // Prepare a clear subject line for the business inbox.
+            const subject = `[LengthHairCare] Product enquiry: ${interest}`;
+
+            // Combine the customer's selections into an email message.
+            const message = `
+Customer name: ${name}
+
+Customer email: ${email}
+
+Product or service of interest: ${interest}
+
+Hair porosity: ${porosity}
+
+Customer's message:
+${customerMessage}
+            `;
+
+            // Prevent duplicate submissions while the email is being sent.
             submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
+
+            submitButton.textContent = 'Sending enquiry...';
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        access_key: WEB3FORMS_ACCESS_KEY,
-                        name,
-                        email: String(data.get('email')).trim(),
-                        phone,
-                        subject,
-                        message: String(data.get('message')).trim()
-                    })
-                });
-                const json = await response.json();
-                if (!response.ok || !json.success) throw new Error('Send failed');
 
-                result.textContent = `Thank you, ${name}. Your message has been sent and we will get back to you soon.`;
-                contactForm.reset();
+                // Send the enquiry to the business through Web3Forms.
+                const response = await fetch(
+                    'https://api.web3forms.com/submit',
+                    {
+                        method: 'POST',
+
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+
+                        body: JSON.stringify({
+
+                            // Insert your newly generated Web3Forms key here.
+                            access_key: 'YOUR_NEW_WEB3FORMS_ACCESS_KEY',
+
+                            name: name,
+
+                            email: email,
+
+                            subject: subject,
+
+                            message: message
+
+                        })
+                    }
+                );
+
+                // Read the response returned by the email service.
+                const json = await response.json();
+
+                // Treat unsuccessful submissions as errors.
+                if (!response.ok || !json.success) {
+                    throw new Error('Enquiry submission failed.');
+                }
+
+                // Generate a personalised confirmation for the customer.
+                const friendlyPorosity = {
+                    low: 'low',
+                    medium: 'medium',
+                    high: 'high'
+                }[porosity];
+
+                const productResponse =
+                    interest === 'Hair Growth Oil'
+                        ? 'The Hair Growth Oil is listed at R350. We can confirm current availability when we reply.'
+                        : `Thanks for asking about ${escapeHTML(interest)}. Price and availability will be confirmed by our team.`;
+
+                const porosityResponse = friendlyPorosity
+                    ? `Based on your ${friendlyPorosity} porosity selection, our team can also suggest how to introduce it into a routine.`
+                    : 'Our team can help you explore a suitable starting point for your hair routine.';
+
+                // Display confirmation only after successful email delivery.
+                result.innerHTML = `
+                    <strong>Thank you, ${escapeHTML(name)}.</strong>
+                    Your enquiry has been sent successfully.
+                    ${productResponse}
+                    ${porosityResponse}
+                    We will get back to you soon.
+                `;
+
+                // Clear the form after successful submission.
+                enquiryForm.reset();
+
             } catch (error) {
-                result.textContent = 'Sorry, your message could not be sent. Please try again, or email us at info@lengthhaircare.co.za.';
+
+                // Display an error if the email service cannot process the enquiry.
+                result.textContent =
+                    'Sorry, your enquiry could not be sent. Please try again or contact us through our contact page.';
+
             }
 
+            // Make the response visible and accessible to the customer.
             result.hidden = false;
+
             result.focus();
+
+            // Restore the submit button for future enquiries.
             submitButton.disabled = false;
-            submitButton.textContent = 'Send message';
+
+            submitButton.textContent = 'Get a recommendation';
+
         });
+
     }
-
-});
-
-function escapeHTML(value) {
-    return String(value ?? '').replace(/[&<>"']/g, (character) => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    })[character]);
-}
