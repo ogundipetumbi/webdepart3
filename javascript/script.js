@@ -225,127 +225,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ENQUIRY FORM VALIDATION
-    const enquiryForm = document.querySelector('#enquiry-form');
+   enquiryForm.addEventListener('submit', async (event) => {
 
-    if (enquiryForm) {
+    event.preventDefault();
 
-        const enquiryRules = {
+    const results = Object.keys(enquiryRules).map(checkEnquiryField);
 
-            name: (v) =>
-                v.trim().length < 2
-                    ? 'Please enter your full name (at least 2 letters).'
-                    : '',
+    if (results.includes(false)) {
 
-            email: (v) =>
-                !v.trim()
-                    ? 'Please enter your email address.'
-                    : !emailPattern.test(v.trim())
-                        ? 'Please enter a valid email address, for example name@example.com.'
-                        : '',
+        const firstBad = Object.keys(enquiryRules).find((name) =>
+            enquiryForm.elements[name].getAttribute('aria-invalid') === 'true'
+        );
 
-            interest: (v) =>
-                !v ? 'Please choose a product or service.' : '',
+        enquiryForm.elements[firstBad].focus();
 
-            porosity: (v) =>
-                !v ? 'Please choose a porosity option.' : '',
+        return;
+    }
 
-            message: (v) =>
-                v.trim().length < 10
-                    ? 'Please write at least 10 characters.'
-                    : ''
-        };
+    const data = new FormData(enquiryForm);
 
+    const name = String(data.get('name')).trim();
+    const email = String(data.get('email')).trim();
+    const interest = String(data.get('interest'));
+    const porosity = String(data.get('porosity'));
+    const message = String(data.get('message')).trim();
 
-        const checkEnquiryField = (name) => {
+    const result = document.querySelector('#enquiry-result');
 
-            const field = enquiryForm.elements[name];
+    const button = enquiryForm.querySelector('button[type="submit"]');
 
-            const error = document.querySelector(`#enquiry-error-${name}`);
+    const subject = `[LengthHairCare] Product Enquiry: ${interest}`;
 
-            const problem = enquiryRules[name](field.value);
+    const fullMessage = `
+NEW CUSTOMER ENQUIRY
 
-            error.textContent = problem;
-            error.hidden = !problem;
+Customer name: ${name}
+Customer email: ${email}
 
-            field.setAttribute('aria-invalid', problem ? 'true' : 'false');
+Product of interest: ${interest}
+Hair porosity: ${porosity}
 
-            return !problem;
-        };
+Customer message:
+${message}
+    `;
 
+    button.disabled = true;
+    button.textContent = 'Sending...';
 
-        Object.keys(enquiryRules).forEach((name) => {
+    try {
 
-            const field = enquiryForm.elements[name];
+        const response = await fetch('https://api.web3forms.com/submit', {
 
-            field.addEventListener('input', () => {
-                if (field.getAttribute('aria-invalid') === 'true') {
-                    checkEnquiryField(name);
-                }
-            });
+            method: 'POST',
 
-            field.addEventListener('change', () => checkEnquiryField(name));
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
 
-            field.addEventListener('blur', () => checkEnquiryField(name));
+            body: JSON.stringify({
+
+                access_key: WEB3FORMS_ACCESS_KEY,
+
+                name: name,
+
+                email: email,
+
+                subject: subject,
+
+                message: fullMessage
+
+            })
         });
 
+        const json = await response.json();
 
-        enquiryForm.addEventListener('submit', (event) => {
+        if (!response.ok || !json.success) {
+            throw new Error('Enquiry submission failed');
+        }
 
-            event.preventDefault();
+        result.textContent =
+            `Thank you, ${name}. Your enquiry has been successfully sent to LengthHairCare. We will contact you soon.`;
 
-            const results = Object.keys(enquiryRules).map(checkEnquiryField);
+        enquiryForm.reset();
 
-            if (results.includes(false)) {
+    } catch (error) {
 
-                const firstBad = Object.keys(enquiryRules).find((name) =>
-                    enquiryForm.elements[name].getAttribute('aria-invalid') === 'true'
-                );
+        result.textContent =
+            'Sorry, your enquiry could not be sent. Please try again or contact us directly at info@lengthhaircare.co.za.';
 
-                enquiryForm.elements[firstBad].focus();
+    }
 
-                return;
-            }
+    result.hidden = false;
+    result.focus();
 
-            const data = new FormData(enquiryForm);
+    button.disabled = false;
+    button.textContent = 'Submit enquiry';
 
-            const result = document.querySelector('#enquiry-result');
-
-            const selected = String(data.get('interest'));
-
-            const porosity = data.get('porosity');
-
-            const friendly = {
-                low: 'low',
-                medium: 'medium',
-                high: 'high'
-            }[porosity];
-
-            const response = selected === 'Hair Growth Oil'
-                ? 'The Hair Growth Oil is listed at R350. We can confirm current availability when we reply.'
-                : `Thanks for asking about ${escapeHTML(selected)}. Price and availability are confirmed on enquiry.`;
-
-            result.innerHTML = `
-                <strong>Thanks, ${escapeHTML(String(data.get('name')).trim())}.</strong>
-                ${response}
-
-                ${friendly
-                    ? `Based on your ${friendly} porosity selection, our team can also suggest how to introduce it into a routine.`
-                    : 'If you are unsure of your porosity, our team can help you think through a gentle starting point.'
-                }
-
-                This summary has not been sent to the team. To send us a message, please use the contact form.
-            `;
-
-            result.hidden = false;
-
-            result.focus();
-
-            const button = enquiryForm.querySelector('button[type="submit"]');
-
-            button.disabled = true;
-
-            button.textContent = 'Enquiry received';
-        });
+});
     }
 
 
