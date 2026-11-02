@@ -136,6 +136,8 @@ The map requires an internet connection to load the external map library and map
 
 No database or custom backend server is included in the assignment.
 
+## 6. Project Folder Structure
+
 
 
 
