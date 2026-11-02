@@ -118,6 +118,7 @@ Features include:
 * Location marker.
 * Map zoom controls.
 * Google Maps link.
+* Fallback message if the interactive map cannot load.
 
 
 
