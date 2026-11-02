@@ -119,6 +119,7 @@ Features include:
 * Map zoom controls.
 * Google Maps link.
 * Fallback message if the interactive map cannot load.
+* Keyboard interaction support for the map marker.
 
 
 
