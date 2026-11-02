@@ -124,6 +124,16 @@ Features include:
 The map requires an internet connection to load the external map library and map tiles.
 
 ## 5. Technologies Used
+| Technology     | Purpose                                                |
+| -------------- | ------------------------------------------------------ |
+| HTML5          | Website structure and content.                         |
+| CSS3           | Styling, layout and responsive design.                 |
+| JavaScript     | Interactive website functionality and form validation. |
+| MapLibre GL JS | Interactive map rendering.                             |
+| OpenFreeMap    | Map style and vector tile services.                    |
+| Google Maps    | External directions and location access.               |
+| GitHub Pages   | Intended static website hosting platform.              |
+
 
 
 
