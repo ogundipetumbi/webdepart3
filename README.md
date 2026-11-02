@@ -286,6 +286,17 @@ Potential improvements include:
 9. **Map verification:** Replace the placeholder address with the verified business location.
 10. **Browser testing:** Expand testing across additional browsers and devices.
 
+## 13. Development Changelog
+
+### Version 1.0 — Changes from previous parts
+* From part 1, I added images to my html pages
+* from part1, I added more comments to the code
+* From part 1, I committed more reguraly 
+* From part 1, I added a heron section
+* In part 2, I add no recommended changes from my lecturer.
+### Version 1.1 — Initial Website Development
+
+
 
 
 
