@@ -45,3 +45,6 @@ The navigation is intended to make the website easy to understand and use.
 ## 4. Main Website Features
 
 ### 4.1 Homepage
+he homepage introduces the LengthHairCare brand through a hero section, featured products and an overview of the brand's approach to natural hair care.
+
+Features include:
