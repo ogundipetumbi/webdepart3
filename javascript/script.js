@@ -351,8 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // CONTACT FORM VALIDATION AND EMAIL SUBMISSION
 
-    // IMPORTANT: Add your NEW Web3Forms access key here.
-    const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY';
+ 
+    const WEB3FORMS_ACCESS_KEY = '5a1dfdf6-d2d0-4534-8afc-8ba36baa1adc';
 
     const contactForm = document.querySelector('#contact-form');
 
