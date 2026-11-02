@@ -344,6 +344,15 @@ Potential improvements include:
 * Documented the website structure, functionality and technologies.
 * Added development notes, limitations and references.
 
+### Version 1.5 — Final Review and Submission Preparation
+
+* Reviewed HTML page structure.
+* Reviewed navigation paths and relative file references.
+* Reviewed form instructions and validation areas.
+* Reviewed external map dependencies.
+* Documented known limitations and future improvements.
+* Prepared the project documentation for the  POE submission.
+
 
 
 
