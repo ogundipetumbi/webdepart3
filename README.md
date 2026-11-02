@@ -388,6 +388,12 @@ The project is intended to be hosted using GitHub Pages.
 * OpenFreeMap. *Documentation and Map Styles.*
 * OpenStreetMap Contributors. *OpenStreetMap Data and Attribution.*
 
+### SEO and Deployment
+
+* Google Search Central. *Build and Submit a Sitemap.*
+* Google Search Central. *Introduction to robots.txt.*
+* Sitemaps.org. *Sitemaps XML Format.*
+* GitHub Docs. *GitHub Pages Documentation.*
 
 
 
