@@ -399,6 +399,11 @@ The project is intended to be hosted using GitHub Pages.
 * UNPKG. *Package CDN Documentation.*
 
 
+**End of README**
+
+*LengthHairCare — WEDE5020 Web Development POE, 2026.*
+
+
 
 
 
