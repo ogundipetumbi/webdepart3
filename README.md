@@ -86,5 +86,9 @@ The information provided is intended for general educational purposes and does n
 ### 4.4 Product Enquiry Form
 The enquiry form allows visitors to request assistance with selecting products.
 
+The form includes:
+* Full name.
+* Email address.
+
 
 
