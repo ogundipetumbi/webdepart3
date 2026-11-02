@@ -105,6 +105,7 @@ Features include:
 * Service-area information.
 * General contact form.
 * Input validation and feedback.
+* Google Maps link.
 
 
 
