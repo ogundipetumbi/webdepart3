@@ -121,6 +121,8 @@ Features include:
 * Fallback message if the interactive map cannot load.
 * Keyboard interaction support for the map marker.
 
+The map requires an internet connection to load the external map library and map tiles.
+
 
 
 
