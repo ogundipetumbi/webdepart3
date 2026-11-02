@@ -1,78 +1,321 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Defines the character encoding and ensures mobile responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO description and keywords for search engines -->
     <meta name="description" content="Learn about low, medium and high hair porosity, then ask LengthHairCare for a natural hair product recommendation in South Africa.">
     <meta name="keywords" content="hair porosity guide, natural hair routine, hair care South Africa, porosity products">
+
+    <!-- Browser tab title -->
     <title>Hair Porosity Guide & Product Enquiry | LengthHairCare</title>
+
+    <!-- Links the external stylesheet -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-<header><nav aria-label="Main navigation">
-    <a href="../index.html" class="logo">LengthHairCare</a>
-    <ul><li><a href="../index.html">Home</a></li><li><a href="products.html">Shop</a></li><li><a href="enquiry.html" aria-current="page">Hair Guide</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul>
-    <a href="enquiry.html" class="cart">Enquire</a>
-</nav></header>
-<main>
-    <section class="page-introduction"><p class="eyebrow">A little more understanding goes a long way</p><h1>Your Natural Hair Porosity Guide</h1><p>Porosity describes how easily hair absorbs and holds on to moisture. It is one useful clue when choosing products, though your whole routine and your own experience matter too.</p></section>
-    <section class="hair-guide" aria-labelledby="porosity-title">
-        <h2 id="porosity-title">Explore the three porosity types</h2>
-        <p>Open a card to read a few practical starting points. These are general suggestions, not a diagnosis.</p>
-        <div class="porosity-container porosity-accordion">
-            <article class="porosity-card"><h3><button class="accordion-button" type="button" aria-expanded="false" aria-controls="low-panel" data-accordion-button>Low porosity hair <span aria-hidden="true">+</span></button></h3><div id="low-panel" hidden><p>Moisture may take longer to absorb, and products can sit on the surface. Try applying a small amount to damp hair and keeping the routine light.</p><p>Browse our <a href="products.html">hair oils and care combos</a>, and introduce one product at a time.</p></div></article>
-            <article class="porosity-card"><h3><button class="accordion-button" type="button" aria-expanded="false" aria-controls="medium-panel" data-accordion-button>Medium porosity hair <span aria-hidden="true">+</span></button></h3><div id="medium-panel" hidden><p>Hair often absorbs and retains moisture fairly well. A balanced routine with regular cleansing and conditioning is a useful place to begin.</p><p>Explore the <a href="products.html">LengthHairCare range</a> and adjust based on how your hair responds.</p></div></article>
-            <article class="porosity-card"><h3><button class="accordion-button" type="button" aria-expanded="false" aria-controls="high-panel" data-accordion-button>High porosity hair <span aria-hidden="true">+</span></button></h3><div id="high-panel" hidden><p>Hair can absorb moisture quickly but may lose it just as fast. Layering a moisturising product and a small amount of oil may help your routine hold moisture for longer.</p><p>Our <a href="products.html">herbal spray and oil options</a> can be discussed as part of a routine.</p></div></article>
-        </div>
-    </section>
-    <section class="hair-enquiry" aria-labelledby="enquiry-title">
-        <h2 id="enquiry-title">Ask for a product recommendation</h2>
-        <p>Share what you are looking for. We will confirm product availability and any price that is not listed before you decide.</p>
-        <form id="enquiry-form" novalidate>
-            <label for="enquiry-name">Full name</label>
-            <input type="text" id="enquiry-name" name="name" autocomplete="name" maxlength="60" aria-describedby="enquiry-error-name">
-            <span class="field-error" id="enquiry-error-name" hidden></span>
 
-            <label for="enquiry-email">Email address</label>
-            <input type="email" id="enquiry-email" name="email" autocomplete="email" maxlength="120" aria-describedby="enquiry-error-email">
-            <span class="field-error" id="enquiry-error-email" hidden></span>
+    <!-- Website header and main navigation -->
+    <header>
+        <nav aria-label="Main navigation">
 
-            <label for="interest">What are you interested in?</label>
-            <select id="interest" name="interest" aria-describedby="enquiry-error-interest">
-                <option value="">Choose a product or service</option>
-                <option>Hair Growth Oil</option>
-                <option>Herbal Hair Tea Spray</option>
-                <option>Natural Hair Growth Guide</option>
-                <option>Porosity Care Combo</option>
-                <option>General product advice</option>
-            </select>
-            <span class="field-error" id="enquiry-error-interest" hidden></span>
+            <!-- Website logo linking back to the homepage -->
+            <a href="../index.html" class="logo">LengthHairCare</a>
 
-            <label for="porosity">Hair porosity</label>
-            <select id="porosity" name="porosity" aria-describedby="enquiry-error-porosity">
-                <option value="">Choose an option</option>
-                <option value="low">Low porosity</option>
-                <option value="medium">Medium porosity</option>
-                <option value="high">High porosity</option>
-                <option value="unsure">I am not sure</option>
-            </select>
-            <span class="field-error" id="enquiry-error-porosity" hidden></span>
+            <!-- Navigation links to the website's main pages -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="enquiry.html" aria-current="page">Hair Guide</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
 
-            <label for="enquiry-message">What would you like help with?</label>
-            <textarea id="enquiry-message" name="message" rows="5" maxlength="600" placeholder="For example, tell us what you want your routine to do." aria-describedby="enquiry-error-message"></textarea>
-            <span class="field-error" id="enquiry-error-message" hidden></span>
+            <!-- Quick link to the enquiry page -->
+            <a href="enquiry.html" class="cart">Enquire</a>
 
-            <button type="submit">Get a recommendation</button>
-            <p class="form-help">Please do not include private or sensitive information.</p>
-            <div id="enquiry-result" class="form-result" role="status" tabindex="-1" hidden></div>
-        </form>
-    </section>
-</main>
-<footer>
-    <p>&copy; 2026 LengthHairCare (Pty) Ltd. All rights reserved.</p>
-    <address><a href="https://www.google.com/maps/search/?api=1&query=140%20Commercial%20Rd%2C%20Sidwell%2C%20Gqeberha%2C%206001%2C%20South%20Africa" target="_blank" rel="noopener">140 Commercial Rd, Sidwell, Gqeberha, 6001, South Africa</a></address>
-    <p><a href="contact.html">Contact Us</a> | <a href="about.html">About Us</a> | <a href="products.html">Shop</a></p>
-</footer>
-<script src="../javascript/script.js" defer></script>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Introduction to the hair porosity guide -->
+        <section class="page-introduction">
+
+            <p class="eyebrow">A little more understanding goes a long way</p>
+
+            <h1>Your Natural Hair Porosity Guide</h1>
+
+            <p>
+                Porosity describes how easily hair absorbs and holds on to moisture.
+                It is one useful clue when choosing products, though your whole routine
+                and your own experience matter too.
+            </p>
+
+        </section>
+
+        <!-- Interactive hair porosity guide -->
+        <section class="hair-guide" aria-labelledby="porosity-title">
+
+            <h2 id="porosity-title">Explore the three porosity types</h2>
+
+            <p>
+                Open a card to read a few practical starting points.
+                These are general suggestions, not a diagnosis.
+            </p>
+
+            <div class="porosity-container porosity-accordion">
+
+                <!-- Low porosity information card -->
+                <article class="porosity-card">
+
+                    <h3>
+                        <button class="accordion-button"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="low-panel"
+                            data-accordion-button>
+                            Low porosity hair
+                            <span aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+
+                    <!-- Hidden information becomes visible when the accordion is opened -->
+                    <div id="low-panel" hidden>
+
+                        <p>
+                            Moisture may take longer to absorb, and products can sit
+                            on the surface. Try applying a small amount to damp hair
+                            and keeping the routine light.
+                        </p>
+
+                        <p>
+                            Browse our
+                            <a href="products.html">hair oils and care combos</a>,
+                            and introduce one product at a time.
+                        </p>
+
+                    </div>
+                </article>
+
+                <!-- Medium porosity information card -->
+                <article class="porosity-card">
+
+                    <h3>
+                        <button class="accordion-button"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="medium-panel"
+                            data-accordion-button>
+                            Medium porosity hair
+                            <span aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+
+                    <div id="medium-panel" hidden>
+
+                        <p>
+                            Hair often absorbs and retains moisture fairly well.
+                            A balanced routine with regular cleansing and
+                            conditioning is a useful place to begin.
+                        </p>
+
+                        <p>
+                            Explore the
+                            <a href="products.html">LengthHairCare range</a>
+                            and adjust based on how your hair responds.
+                        </p>
+
+                    </div>
+                </article>
+
+                <!-- High porosity information card -->
+                <article class="porosity-card">
+
+                    <h3>
+                        <button class="accordion-button"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="high-panel"
+                            data-accordion-button>
+                            High porosity hair
+                            <span aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+
+                    <div id="high-panel" hidden>
+
+                        <p>
+                            Hair can absorb moisture quickly but may lose it
+                            just as fast. Layering a moisturising product and
+                            a small amount of oil may help your routine hold
+                            moisture for longer.
+                        </p>
+
+                        <p>
+                            Our
+                            <a href="products.html">herbal spray and oil options</a>
+                            can be discussed as part of a routine.
+                        </p>
+
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Customer product recommendation enquiry form -->
+        <section class="hair-enquiry" aria-labelledby="enquiry-title">
+
+            <h2 id="enquiry-title">Ask for a product recommendation</h2>
+
+            <p>
+                Share what you are looking for. We will confirm product
+                availability and any price that is not listed before you decide.
+            </p>
+
+            <!-- novalidate allows custom JavaScript validation messages -->
+            <form id="enquiry-form" novalidate>
+
+                <!-- Customer name -->
+                <label for="enquiry-name">Full name</label>
+
+                <input
+                    type="text"
+                    id="enquiry-name"
+                    name="name"
+                    autocomplete="name"
+                    maxlength="60"
+                    required
+                    aria-describedby="enquiry-error-name">
+
+                <!-- Displays name validation errors -->
+                <span class="field-error" id="enquiry-error-name" hidden></span>
+
+
+                <!-- Customer email address -->
+                <label for="enquiry-email">Email address</label>
+
+                <input
+                    type="email"
+                    id="enquiry-email"
+                    name="email"
+                    autocomplete="email"
+                    maxlength="120"
+                    required
+                    aria-describedby="enquiry-error-email">
+
+                <!-- Displays email validation errors -->
+                <span class="field-error" id="enquiry-error-email" hidden></span>
+
+
+                <!-- Product or service selection -->
+                <label for="interest">What are you interested in?</label>
+
+                <select
+                    id="interest"
+                    name="interest"
+                    required
+                    aria-describedby="enquiry-error-interest">
+
+                    <option value="">Choose a product or service</option>
+                    <option>Hair Growth Oil</option>
+                    <option>Herbal Hair Tea Spray</option>
+                    <option>Natural Hair Growth Guide</option>
+                    <option>Porosity Care Combo</option>
+                    <option>General product advice</option>
+
+                </select>
+
+                <span class="field-error" id="enquiry-error-interest" hidden></span>
+
+
+                <!-- Customer hair porosity selection -->
+                <label for="porosity">Hair porosity</label>
+
+                <select
+                    id="porosity"
+                    name="porosity"
+                    required
+                    aria-describedby="enquiry-error-porosity">
+
+                    <option value="">Choose an option</option>
+                    <option value="low">Low porosity</option>
+                    <option value="medium">Medium porosity</option>
+                    <option value="high">High porosity</option>
+                    <option value="unsure">I am not sure</option>
+
+                </select>
+
+                <span class="field-error" id="enquiry-error-porosity" hidden></span>
+
+
+                <!-- Additional information from the customer -->
+                <label for="enquiry-message">What would you like help with?</label>
+
+                <textarea
+                    id="enquiry-message"
+                    name="message"
+                    rows="5"
+                    maxlength="600"
+                    minlength="10"
+                    required
+                    placeholder="For example, tell us what you want your routine to do."
+                    aria-describedby="enquiry-error-message"></textarea>
+
+                <span class="field-error" id="enquiry-error-message" hidden></span>
+
+
+                <!-- Submits the enquiry -->
+                <button type="submit">Get a recommendation</button>
+
+                <p class="form-help">
+                    Please do not include private or sensitive information.
+                </p>
+
+                <!-- Displays the submission confirmation or error -->
+                <div
+                    id="enquiry-result"
+                    class="form-result"
+                    role="status"
+                    tabindex="-1"
+                    hidden>
+                </div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Website footer containing business and navigation information -->
+    <footer>
+
+        <p>&copy; 2026 LengthHairCare (Pty) Ltd. All rights reserved.</p>
+
+        <!-- Business address linking to Google Maps -->
+        <address>
+            <a href="https://www.google.com/maps/search/?api=1&query=140%20Commercial%20Rd%2C%20Sidwell%2C%20Gqeberha%2C%206001%2C%20South%20Africa"
+                target="_blank"
+                rel="noopener">
+                140 Commercial Rd, Sidwell, Gqeberha, 6001, South Africa
+            </a>
+        </address>
+
+        <!-- Footer navigation -->
+        <p>
+            <a href="contact.html">Contact Us</a> |
+            <a href="about.html">About Us</a> |
+            <a href="products.html">Shop</a>
+        </p>
+
+    </footer>
+
+    <!-- Loads the external JavaScript file after the HTML has been parsed -->
+    <script src="../javascript/script.js" defer></script>
+
 </body>
 </html>
