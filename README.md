@@ -110,6 +110,7 @@ Features include:
 
 
 ### 4.6 Interactive Map
+The contact page uses MapLibre GL JS to display an interactive map.
 
 
 
