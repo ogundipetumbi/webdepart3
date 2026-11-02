@@ -69,3 +69,5 @@ Features include:
 * Product image viewing through a lightbox.
 * Product enquiry links.
 
+The catalogue is designed to make it easier for visitors to find products based on their interests.
+
