@@ -138,7 +138,7 @@ No database or custom backend server is included in the assignment.
 
 ## 6. Project Folder Structure
 The project is organised into the following folders and files:
-My-website-main2/
+webdepart3/
 │
 ├── index.html
 │
