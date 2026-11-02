@@ -114,6 +114,7 @@ The contact page uses MapLibre GL JS to display an interactive map.
 The map uses the OpenFreeMap Liberty style and displays a location marker.
 
 Features include:
+* Interactive map navigation.
 
 
 
