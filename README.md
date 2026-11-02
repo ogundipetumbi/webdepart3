@@ -384,6 +384,10 @@ The project is intended to be hosted using GitHub Pages.
 * W3C Web Accessibility Initiative (WAI). *Forms Concepts.*
 
 ### Interactive Maps
+* MapLibre. *MapLibre GL JS Documentation.*
+* OpenFreeMap. *Documentation and Map Styles.*
+* OpenStreetMap Contributors. *OpenStreetMap Data and Attribution.*
+
 
 
 
