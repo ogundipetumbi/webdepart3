@@ -52,46 +52,87 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     }
 
-    // Accessible lightbox: click a gallery image, close button, backdrop or Escape.
-    const lightbox = document.querySelector('#image-lightbox');
-    if (lightbox) {
-        const image = lightbox.querySelector('img');
-        const closeButton = lightbox.querySelector('[data-lightbox-close]');
-        let previousFocus;
-        const close = () => {
-            lightbox.hidden = true;
-            document.body.classList.remove('lightbox-open');
-            previousFocus?.focus();
-        };
-        document.addEventListener('click', (event) => {
-            const trigger = event.target.closest('.gallery-trigger');
-            if (!trigger) return;
-            previousFocus = trigger;
-            image.src = trigger.dataset.fullImage;
-            image.alt = trigger.dataset.imageAlt || '';
-            lightbox.hidden = false;
-            document.body.classList.add('lightbox-open');
-            closeButton.focus();
-        });
-        closeButton?.addEventListener('click', close);
-        lightbox.addEventListener('click', (event) => { if (event.target === lightbox) close(); });
-        document.addEventListener('keydown', (event) => {
-            if (lightbox.hidden) return;
-            if (event.key === 'Escape') close();
-            if (event.key === 'Tab') {
-                event.preventDefault();
-                closeButton.focus();
-            }
-        });
-    }
+    // IMAGE LIGHTBOX
+// Allows visitors to enlarge images on the homepage and products page.
 
-    // Product links preselect the matching enquiry option, so the hand-off is clear.
-    const requestedProduct = new URLSearchParams(window.location.search).get('product');
-    const interestSelect = document.querySelector('#interest');
-    if (requestedProduct && interestSelect) {
-        const option = Array.from(interestSelect.options).find((item) => item.value === requestedProduct || item.textContent === requestedProduct);
-        if (option) option.selected = true;
-    }
+const lightbox = document.querySelector('#image-lightbox');
+
+if (lightbox) {
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const closeButton = lightbox.querySelector('[data-lightbox-close]');
+
+    let previousFocus = null;
+
+    // Open the enlarged image when a gallery image is selected.
+    document.addEventListener('click', (event) => {
+
+        // Make sure the clicked element supports closest().
+        if (!(event.target instanceof Element)) return;
+
+        const imageButton = event.target.closest('.gallery-trigger');
+
+        if (!imageButton) return;
+
+        previousFocus = imageButton;
+
+        // Get the image information from the selected button.
+        const imageSource = imageButton.dataset.fullImage;
+        const imageDescription = imageButton.dataset.imageAlt || '';
+
+        if (!imageSource || !lightboxImage) return;
+
+        // Display the selected image.
+        lightboxImage.src = imageSource;
+        lightboxImage.alt = imageDescription;
+
+        // Show the lightbox.
+        lightbox.hidden = false;
+        document.body.classList.add('lightbox-open');
+
+        // Move keyboard focus to the close button.
+        closeButton?.focus();
+    });
+
+    // Close the lightbox.
+    const closeLightbox = () => {
+
+        lightbox.hidden = true;
+
+        // Remove the enlarged image.
+        if (lightboxImage) {
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+        }
+
+        document.body.classList.remove('lightbox-open');
+
+        // Return focus to the image that was selected.
+        previousFocus?.focus();
+    };
+
+    // Close using the Close button.
+    closeButton?.addEventListener('click', closeLightbox);
+
+    // Close when the visitor clicks outside the enlarged image.
+    lightbox.addEventListener('click', (event) => {
+
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+
+    });
+
+    // Close using the Escape key.
+    document.addEventListener('keydown', (event) => {
+
+        if (lightbox.hidden) return;
+
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+
+    });
+}
 
     // Shared email check used by both forms.
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
