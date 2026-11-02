@@ -138,6 +138,121 @@ No database or custom backend server is included in the assignment.
 
 ## 6. Project Folder Structure
 The project is organised into the following folders and files:
+My-website-main2/
+│
+├── index.html
+│
+├── pages/
+│   ├── products.html
+│   ├── enquiry.html
+│   ├── about.html
+│   └── contact.html
+│
+├── css/
+│   └── style.css
+│
+├── javascript/
+│   ├── script.js
+│   └── map.js
+│
+├── assets/
+│   └── [Website images and other visual assets]
+│
+├── sitemap.xml
+├── robots.txt
+└── README.md
+```
+
+The folder structure separates the HTML pages, stylesheet, JavaScript files and website assets to make the project easier to maintain.
+
+## 7. Installation and Local Setup
+
+The website is a static website and does not require a server-side installation.
+
+## 8. JavaScript Functionality
+
+JavaScript is used to make the website interactive.
+
+The main functionality includes:
+
+* Dynamic product rendering.
+* Product search.
+* Product category filtering.
+* Product result counting.
+* Empty search-result messages.
+* Product image lightbox.
+* Keyboard interaction for the lightbox.
+* Hair porosity accordion.
+* Product selection through URL query parameters.
+* Enquiry form validation.
+* Contact form validation.
+* User feedback messages.
+* Interactive map functionality through a separate JavaScript file.
+
+The main JavaScript file is:
+
+`javascript/script.js`
+
+The map functionality is handled separately through:
+
+`javascript/map.js`
+
+Separating the map functionality from the main website script helps keep the code organised by purpose.
+
+## 9. Responsive Design and Accessibility
+
+The website is intended to support different screen sizes, including desktop computers, tablets and mobile devices.
+
+Accessibility considerations incorporated into the HTML include:
+
+* Semantic HTML elements such as `header`, `nav`, `main`, `section`, `article` and `footer`.
+* Alternative text for product images.
+* Labels associated with form inputs.
+* Descriptive navigation labels.
+* Appropriate heading structure.
+* Keyboard-accessible buttons.
+* ARIA attributes for interactive elements.
+* Live regions for selected feedback messages.
+* Visible form error areas.
+
+The stylesheet should also be tested to confirm that the layout, navigation, product cards and forms remain usable on smaller screens.
+
+## 10. Search Engine Optimisation (SEO)
+
+Basic SEO practices have been incorporated into the website.
+
+These include:
+
+* Descriptive page titles.
+* Meta descriptions.
+* Relevant page-specific keywords.
+* Meaningful heading structures.
+* Alternative text for images.
+* A `sitemap.xml` file.
+* A `robots.txt` file.
+
+### Sitemap
+
+The sitemap identifies the main website pages for search engine discovery.
+
+File:
+
+`sitemap.xml`
+
+The sitemap uses the standard XML sitemap structure.
+
+### Robots.txt
+
+The robots file provides general crawling instructions to search engine crawlers.
+
+File:
+
+`robots.txt`
+
+The current file allows all user agents to crawl the website and identifies the location of the sitemap.
+
+**SEO limitation:** Creating a sitemap and robots file does not mean that search engines will index the website. 
+## 11. Testing and Quality Assurance
 
 
 
