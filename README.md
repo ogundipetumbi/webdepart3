@@ -28,3 +28,12 @@ The main objectives of the website are to:
 ## 3. Website Structure
 
 The website consists of five main HTML pages.
+
+| Page       | File                  | Description                                                                         |
+| ---------- | --------------------- | ----------------------------------------------------------------------------------- |
+| Home       | `index.html`          | Introduces LengthHairCare and displays featured products and brand information.     |
+| Shop       | `pages/products.html` | Displays the product catalogue, including search and filtering functionality.       |
+| Hair Guide | `pages/enquiry.html`  | Provides information about hair porosity and a product recommendation enquiry form. |
+| About Us   | `pages/about.html`    | Explains the brand, its mission, values and approach to natural hair care.          |
+| Contact    | `pages/contact.html`  | Provides contact information, an interactive map and a general contact form.        |
+
