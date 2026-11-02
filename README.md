@@ -101,6 +101,7 @@ The Contact page provides visitors with the business's contact details and a gen
 
 Features include:
 * Business email address.
+* Business address.
 
 
 
