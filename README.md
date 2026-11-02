@@ -324,6 +324,26 @@ Potential improvements include:
 * Added feedback messages for form interactions.
 * Reviewed the website navigation and page structure.
 
+### Version 1.3 — Interactive Map
+
+* Added MapLibre GL JS to the Contact page.
+* Integrated the OpenFreeMap Liberty map style.
+* Added a location marker.
+* Added map navigation controls.
+* Added a Google Maps link.
+* Added keyboard interaction to the map marker.
+* Added a fallback message for map-loading failures.
+
+### Version 1.4 — SEO and Documentation
+
+* Added page-specific meta descriptions.
+* Reviewed page titles and keywords.
+* Created `sitemap.xml`.
+* Created `robots.txt`.
+* Updated the project README.
+* Documented the website structure, functionality and technologies.
+* Added development notes, limitations and references.
+
 
 
 
