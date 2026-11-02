@@ -39,3 +39,6 @@ The website consists of five main HTML pages.
 
 
 ### Main Navigation
+All five pages share a consistent navigation structure. Visitors can move between the Home, Shop, Hair Guide, About Us and Contact sections.
+
+The navigation is intended to make the website easy to understand and use.
