@@ -90,6 +90,7 @@ The form includes:
 * Full name.
 * Email address.
 * Product or service of interest.
+* Hair porosity.
 
 
 
