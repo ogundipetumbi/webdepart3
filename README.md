@@ -116,6 +116,7 @@ The map uses the OpenFreeMap Liberty style and displays a location marker.
 Features include:
 * Interactive map navigation.
 * Location marker.
+* Map zoom controls.
 
 
 
