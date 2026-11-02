@@ -71,3 +71,8 @@ Features include:
 
 The catalogue is designed to make it easier for visitors to find products based on their interests.
 
+### 4.3 Hair Porosity Guide
+
+The Hair Guide page introduces three general hair porosity categories:
+
+
