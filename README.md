@@ -89,6 +89,7 @@ The enquiry form allows visitors to request assistance with selecting products.
 The form includes:
 * Full name.
 * Email address.
+* Product or service of interest.
 
 
 
