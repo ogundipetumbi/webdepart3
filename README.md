@@ -104,6 +104,7 @@ Features include:
 * Business address.
 * Service-area information.
 * General contact form.
+* Input validation and feedback.
 
 
 
