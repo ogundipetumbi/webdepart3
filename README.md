@@ -91,6 +91,7 @@ The form includes:
 * Email address.
 * Product or service of interest.
 * Hair porosity.
+* Message field.
 
 
 
