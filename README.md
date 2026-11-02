@@ -59,5 +59,13 @@ Features include:
 The product page provides a catalogue of natural hair-care products.
 
 JavaScript is used to support dynamic product functionality.
+Features include:
 
+* Product catalogue generated using JavaScript.
+* Search functionality.
+* Product category filtering.
+* Product result count.
+* Empty-state message when no products match a search.
+* Product image viewing through a lightbox.
+* Product enquiry links.
 
