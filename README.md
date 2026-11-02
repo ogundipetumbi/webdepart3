@@ -294,7 +294,15 @@ Potential improvements include:
 * From part 1, I committed more reguraly 
 * From part 1, I added a heron section
 * In part 2, I add no recommended changes from my lecturer.
+
 ### Version 1.1 — Initial Website Development
+* Created the main website structure.
+* Developed the homepage.
+* Added the Products, Hair Guide, About Us and Contact pages.
+* Created the main navigation system.
+* Added introductory brand content and product information.
+* Developed the initial CSS styling.
+
 
 
 
