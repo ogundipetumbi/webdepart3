@@ -37,3 +37,5 @@ The website consists of five main HTML pages.
 | About Us   | `pages/about.html`    | Explains the brand, its mission, values and approach to natural hair care.          |
 | Contact    | `pages/contact.html`  | Provides contact information, an interactive map and a general contact form.        |
 
+
+### Main Navigation
