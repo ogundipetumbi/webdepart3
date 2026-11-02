@@ -271,6 +271,20 @@ The current file allows all user agents to crawl the website and identifies the 
 | SEO files             | Sitemap and robots.txt are accessible at the deployed website address.  |
 | Browser compatibility | Pages display and function correctly in supported browsers.             |
 
+## 12. Known Limitations and Future Improvements
+
+Potential improvements include:
+
+1. **Backend integration:** Introduce a backend service to process and manage customer enquiries.
+2. **Database integration:** Store product information and customer enquiries securely.
+3. **Product checkout:** Add an online shopping cart and secure payment functionality.
+4. **Customer accounts:** Allow customers to create accounts and track orders.
+5. **Product management:** Introduce an administration interface for managing product details and stock.
+6. **Email automation:** Implement a reliable server-side email service for customer enquiries.
+7. **SEO improvements:** Add structured data, canonical URLs and search engine verification.
+8. **Accessibility testing:** Conduct additional testing using screen readers and accessibility evaluation tools.
+9. **Map verification:** Replace the placeholder address with the verified business location.
+10. **Browser testing:** Expand testing across additional browsers and devices.
 
 
 
