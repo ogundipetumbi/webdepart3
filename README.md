@@ -83,5 +83,8 @@ The page also includes an enquiry form where visitors can provide their details 
 
 The information provided is intended for general educational purposes and does not replace professional hair or scalp advice.
 
+### 4.4 Product Enquiry Form
+The enquiry form allows visitors to request assistance with selecting products.
+
 
 
