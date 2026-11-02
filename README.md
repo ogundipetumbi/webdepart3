@@ -395,6 +395,9 @@ The project is intended to be hosted using GitHub Pages.
 * Sitemaps.org. *Sitemaps XML Format.*
 * GitHub Docs. *GitHub Pages Documentation.*
 
+* Google Maps. *Maps URLs Documentation.*
+* UNPKG. *Package CDN Documentation.*
+
 
 
 
