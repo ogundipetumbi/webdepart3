@@ -353,6 +353,39 @@ Potential improvements include:
 * Documented known limitations and future improvements.
 * Prepared the project documentation for the  POE submission.
 
+## 14. Deployment
+
+The project is intended to be hosted using GitHub Pages.
+
+## 15. References and Credits
+
+
+### HTML and Web Standards
+
+* Mozilla Developer Network (MDN). *HTML: HyperText Markup Language.*
+* Mozilla Developer Network (MDN). *HTML Forms Guide.*
+* World Wide Web Consortium (W3C). *HTML Standards and Specifications.*
+
+### CSS and Responsive Design
+
+* Mozilla Developer Network (MDN). *CSS: Cascading Style Sheets.*
+* Mozilla Developer Network (MDN). *Responsive Design.*
+
+### JavaScript
+
+* Mozilla Developer Network (MDN). *JavaScript Guide.*
+* Mozilla Developer Network (MDN). *Document Object Model (DOM).*
+* Mozilla Developer Network (MDN). *Client-side Form Validation.*
+* Mozilla Developer Network (MDN). *Event Handling.*
+
+### Accessibility
+
+* World Wide Web Consortium (W3C). *Web Content Accessibility Guidelines (WCAG).*
+* W3C Web Accessibility Initiative (WAI). *Forms Concepts.*
+
+### Interactive Maps
+
+
 
 
 
