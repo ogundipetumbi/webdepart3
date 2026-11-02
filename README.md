@@ -93,5 +93,12 @@ The form includes:
 * Hair porosity.
 * Message field.
 
+JavaScript validation is used to check the information entered before processing the enquiry.
+The form also includes areas for displaying validation messages and submission feedback.
+
+### 4.5 Contact Page
+The Contact page provides visitors with the business's contact details and a general message form.
+
+
 
 
