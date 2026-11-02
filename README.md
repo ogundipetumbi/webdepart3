@@ -315,6 +315,14 @@ Potential improvements include:
 * Added enquiry form validation.
 * Added contact form validation and user feedback.
 
+### Version 1.3 — User Experience and Accessibility
+
+* Added descriptive image alternative text.
+* Improved form labels and validation message areas.
+* Added ARIA attributes to interactive elements.
+* Improved keyboard interaction for selected components.
+* Added feedback messages for form interactions.
+* Reviewed the website navigation and page structure.
 
 
 
