@@ -79,5 +79,7 @@ The Hair Guide page introduces three general hair porosity categories:
 * High porosity.
 
 JavaScript accordion functionality allows visitors to expand and collapse the information associated with each category.
+The page also includes an enquiry form where visitors can provide their details and request a product recommendation.
+
 
 
