@@ -106,6 +106,7 @@ Features include:
 * General contact form.
 * Input validation and feedback.
 * Google Maps link.
+* Interactive map using MapLibre GL JS and OpenFreeMap.
 
 
 
