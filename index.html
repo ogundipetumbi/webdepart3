@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿```html
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,12 +8,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Explore natural hair care products, hair porosity guidance and simple routines from LengthHairCare, a South African hair care brand.">
-    <meta name="keywords" content="natural hair care South Africa, hair growth oil, hair porosity guide, herbal hair tea">
+    <meta name="description"
+        content="Explore natural hair care products, hair porosity guidance and simple routines from LengthHairCare, a South African hair care brand.">
+
+    <meta name="keywords"
+        content="natural hair care South Africa, hair growth oil, hair porosity guide, herbal hair tea">
+
+    <meta name="author" content="LengthHairCare">
+
     <title>Natural Hair Care South Africa | LengthHairCare</title>
 
     <!-- Link to the website stylesheet -->
-    <link rel="stylesheet" href="./css/style.css"> 
+    <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
@@ -81,8 +88,19 @@
                 <article class="product-card">
 
                     <div class="product-image">
-                        <img src="assets/high-porosity-hair-oil.jpg"
-                             alt="LengthHairCare hair growth oil">
+
+                        <button class="gallery-trigger"
+                            type="button"
+                            data-full-image="assets/high-porosity-hair-oil.jpg"
+                            data-image-alt="LengthHairCare hair growth oil"
+                            aria-label="Enlarge Hair Growth Oil image">
+
+                            <img
+                                src="assets/high-porosity-hair-oil.jpg"
+                                alt="LengthHairCare hair growth oil">
+
+                        </button>
+
                     </div>
 
                     <h3>Hair Growth Oil</h3>
@@ -104,8 +122,17 @@
 
                     <div class="product-image">
 
-                        <img src="assets/high-porosity-herbal-tea.jpg"
-                             alt="LengthHairCare herbal hair tea spray">
+                        <button class="gallery-trigger"
+                            type="button"
+                            data-full-image="assets/high-porosity-herbal-tea.jpg"
+                            data-image-alt="LengthHairCare herbal hair tea spray"
+                            aria-label="Enlarge Herbal Hair Tea Spray image">
+
+                            <img
+                                src="assets/high-porosity-herbal-tea.jpg"
+                                alt="LengthHairCare herbal hair tea spray">
+
+                        </button>
 
                     </div>
 
@@ -128,8 +155,17 @@
 
                     <div class="product-image">
 
-                        <img src="assets/hair-care-comb-guide.jpg"
-                             alt="Natural hair growth guide">
+                        <button class="gallery-trigger"
+                            type="button"
+                            data-full-image="assets/hair-care-comb-guide.jpg"
+                            data-image-alt="Natural hair growth guide"
+                            aria-label="Enlarge Natural Hair Growth Guide image">
+
+                            <img
+                                src="assets/hair-care-comb-guide.jpg"
+                                alt="Natural hair growth guide">
+
+                        </button>
 
                     </div>
 
@@ -204,7 +240,7 @@
 
                 <article>
 
-                    <h3>Quality & Care</h3>
+                    <h3>Quality &amp; Care</h3>
 
                     <p>
                         We aim to provide quality products and
@@ -219,6 +255,32 @@
         </section>
 
     </main>
+
+
+    <!-- Image Lightbox -->
+    <div id="image-lightbox"
+        class="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Enlarged product image"
+        hidden>
+
+        <button
+            class="lightbox-close"
+            type="button"
+            data-lightbox-close
+            aria-label="Close enlarged image">
+
+            &times;
+
+        </button>
+
+        <img
+            class="lightbox-image"
+            src=""
+            alt="">
+
+    </div>
 
 
     <!-- Footer containing website information -->
@@ -243,4 +305,4 @@
 </body>
 
 </html>
-
+```
