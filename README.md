@@ -10,3 +10,17 @@ LengthHairCare is a multi-page website developed for a South African natural hai
 The project was developed using HTML5, CSS3 and vanilla JavaScript. It focuses on creating a straightforward, accessible and responsive user experience across different screen sizes and devices.
 
 The website allows visitors to explore products, filter the product catalogue, learn about different hair porosity types, submit product enquiries and access the brand's contact information.
+
+## 2. Project Objectives
+
+The main objectives of the website are to:
+
+* Establish an online presence for LengthHairCare.
+* Present natural hair-care products in an organised catalogue.
+* Provide visitors with basic information about hair porosity.
+* Allow users to search and filter available products.
+* Provide an enquiry form for personalised product recommendations.
+* Provide a contact form for general questions and feedback.
+* Incorporate an interactive map showing the business location.
+* Apply responsive design principles to support mobile and desktop users.
+* Implement basic search engine optimisation (SEO) and accessibility practices.
