@@ -54,3 +54,10 @@ Features include:
 * Product image viewing functionality.
 * Links to the product catalogue and hair guide.
 * Brand introduction and benefits sections.
+
+### 4.2 Product Catalogue
+The product page provides a catalogue of natural hair-care products.
+
+JavaScript is used to support dynamic product functionality.
+
+
