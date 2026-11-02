@@ -2,6 +2,7 @@
 
 // This makes sure the JavaScript only runs after the webpage has finished loading.
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('LENGTHHAIRCARE JAVASCRIPT LOADED');
 
     // POROSITY ACCORDION
     document.querySelectorAll('[data-accordion-button]').forEach((button) => {
@@ -220,43 +221,116 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // EMAIL VALIDATION
+        // EMAIL VALIDATION
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 
-    // ENQUIRY FORM VALIDATION
-   enquiryForm.addEventListener('submit', async (event) => {
+    // ENQUIRY FORM VALIDATION AND EMAIL SUBMISSION
 
-    event.preventDefault();
+    const enquiryForm = document.querySelector('#enquiry-form');
+    console.log('ENQUIRY FORM FOUND:', enquiryForm);
 
-    const results = Object.keys(enquiryRules).map(checkEnquiryField);
+    if (enquiryForm) {
 
-    if (results.includes(false)) {
+        const enquiryRules = {
 
-        const firstBad = Object.keys(enquiryRules).find((name) =>
-            enquiryForm.elements[name].getAttribute('aria-invalid') === 'true'
-        );
+            name: (v) =>
+                v.trim().length < 2
+                    ? 'Please enter your full name (at least 2 letters).'
+                    : '',
 
-        enquiryForm.elements[firstBad].focus();
+            email: (v) =>
+                !v.trim()
+                    ? 'Please enter your email address.'
+                    : !emailPattern.test(v.trim())
+                        ? 'Please enter a valid email address.'
+                        : '',
 
-        return;
-    }
+            interest: (v) =>
+                !v ? 'Please select a product of interest.' : '',
 
-    const data = new FormData(enquiryForm);
+            porosity: (v) =>
+                !v ? 'Please select your hair porosity.' : '',
 
-    const name = String(data.get('name')).trim();
-    const email = String(data.get('email')).trim();
-    const interest = String(data.get('interest'));
-    const porosity = String(data.get('porosity'));
-    const message = String(data.get('message')).trim();
+            message: (v) =>
+                v.trim().length < 10
+                    ? 'Please provide a little more detail (at least 10 characters).'
+                    : ''
+        };
 
-    const result = document.querySelector('#enquiry-result');
 
-    const button = enquiryForm.querySelector('button[type="submit"]');
+        const checkEnquiryField = (name) => {
 
-    const subject = `[LengthHairCare] Product Enquiry: ${interest}`;
+            const field = enquiryForm.elements[name];
 
-    const fullMessage = `
+            const error = document.querySelector(`#enquiry-error-${name}`);
+
+            const problem = enquiryRules[name](field.value);
+
+            if (error) {
+                error.textContent = problem;
+                error.hidden = !problem;
+            }
+
+            field.setAttribute('aria-invalid', problem ? 'true' : 'false');
+
+            return !problem;
+        };
+
+
+        Object.keys(enquiryRules).forEach((name) => {
+
+            const field = enquiryForm.elements[name];
+
+            field.addEventListener('input', () => {
+                if (field.getAttribute('aria-invalid') === 'true') {
+                    checkEnquiryField(name);
+                }
+            });
+
+            field.addEventListener('change', () => checkEnquiryField(name));
+
+            field.addEventListener('blur', () => checkEnquiryField(name));
+        });
+
+
+        enquiryForm.addEventListener('submit', async (event) => {
+
+    console.log('ENQUIRY FORM SUBMIT EVENT FIRED');
+
+            event.preventDefault();
+
+            const result = document.querySelector('#enquiry-result');
+
+            const button = enquiryForm.querySelector('button[type="submit"]');
+
+            result.hidden = true;
+
+            const results = Object.keys(enquiryRules).map(checkEnquiryField);
+
+            if (results.includes(false)) {
+
+                const firstBad = Object.keys(enquiryRules).find((name) =>
+                    enquiryForm.elements[name].getAttribute('aria-invalid') === 'true'
+                );
+
+                enquiryForm.elements[firstBad].focus();
+
+                return;
+            }
+
+
+            const data = new FormData(enquiryForm);
+
+            const name = String(data.get('name')).trim();
+            const email = String(data.get('email')).trim();
+            const interest = String(data.get('interest'));
+            const porosity = String(data.get('porosity'));
+            const message = String(data.get('message')).trim();
+
+            const subject = `[LengthHairCare] Product Enquiry: ${interest}`;
+
+            const fullMessage = `
 NEW CUSTOMER ENQUIRY
 
 Customer name: ${name}
@@ -267,65 +341,66 @@ Hair porosity: ${porosity}
 
 Customer message:
 ${message}
-    `;
+            `;
 
-    button.disabled = true;
-    button.textContent = 'Sending...';
 
-    try {
+            button.disabled = true;
+            button.textContent = 'Sending...';
 
-        const response = await fetch('https://api.web3forms.com/submit', {
 
-            method: 'POST',
+            try {
 
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
+                const response = await fetch('https://api.web3forms.com/submit', {
 
-            body: JSON.stringify({
+                    method: 'POST',
 
-                access_key: WEB3FORMS_ACCESS_KEY,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
 
-                name: name,
+                    body: JSON.stringify({
 
-                email: email,
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        name: name,
+                        email: email,
+                        subject: subject,
+                        message: fullMessage
 
-                subject: subject,
+                    })
+                });
 
-                message: fullMessage
 
-            })
+                const json = await response.json();
+
+                if (!response.ok || !json.success) {
+                    throw new Error('Enquiry submission failed');
+                }
+
+
+                result.textContent =
+                    `Thank you, ${name}. Your enquiry has been successfully sent to LengthHairCare. We will contact you soon.`;
+
+                enquiryForm.reset();
+
+
+            } catch (error) {
+
+                result.textContent =
+                    'Sorry, your enquiry could not be sent. Please try again or contact us directly at info@lengthhaircare.co.za.';
+
+            }
+
+
+            result.hidden = false;
+            result.focus();
+
+            button.disabled = false;
+            button.textContent = 'Get a recommendation';
+
         });
 
-        const json = await response.json();
-
-        if (!response.ok || !json.success) {
-            throw new Error('Enquiry submission failed');
-        }
-
-        result.textContent =
-            `Thank you, ${name}. Your enquiry has been successfully sent to LengthHairCare. We will contact you soon.`;
-
-        enquiryForm.reset();
-
-    } catch (error) {
-
-        result.textContent =
-            'Sorry, your enquiry could not be sent. Please try again or contact us directly at info@lengthhaircare.co.za.';
-
     }
-
-    result.hidden = false;
-    result.focus();
-
-    button.disabled = false;
-    button.textContent = 'Submit enquiry';
-
-});
-    }
-
-
     // CONTACT FORM VALIDATION AND EMAIL SUBMISSION
 
  
