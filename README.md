@@ -398,6 +398,8 @@ The project is intended to be hosted using GitHub Pages.
 * Google Maps. *Maps URLs Documentation.*
 * UNPKG. *Package CDN Documentation.*
 
+###How the forms look when they are sent to the email address
+<img width="717" height="1600" alt="HowFormIsRecieved" src="https://github.com/user-attachments/assets/821f330b-f733-45c2-b565-aea8585bf527" />
 
 **End of README**
 
